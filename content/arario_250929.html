@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>ansqhdd</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+        font-family: 'NotoSansKR';
+        src: url(../fonts/NotoSansKR.ttf) format(truetype);
+        }
+        
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'NotoSansKR';
+        }
+
+        #sittingman {
+        right: 30px;
+        bottom: 20px;
+        position: absolute;
+        display: inline-block;
+        }
+            #sittingman img {
+            width: 20px;
+            height: auto;
+            }
+            #sittingman::after {
+            content: "back to the town";
+            position: absolute;
+            right: 130%;
+            top: 0;
+            background-color: rgba(80, 78, 78, 0.7);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 7pt;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            }
+            #sittingman:hover::after {
+            opacity: 1;
+            }
+
+        .container {
+        display: flex;
+        position: relative;
+        height: 100vh;
+        }
+            .left {
+            width: 25%;
+            height: 100vh;
+            max-width: 351px;
+            min-width: 265px;
+            margin-left: auto;
+            padding: 45px 100px 0 50px;
+            border-right: 1px solid rgba(0, 0, 0, 0.393);
+            position: sticky;
+            overflow-y: auto;
+            }
+            .right {
+            width: 75%;
+            height: 100vh;
+            max-width: 1017px;
+            min-width: 794px;
+            margin-right:auto;
+            padding: 45px 130px 35px 130px;
+            overflow-y: scroll;
+            }
+        .title {
+        font-size: 20pt;
+        font-weight: 450;
+        line-height: 150%;
+        padding-bottom: 10px;
+        }
+            .info {
+            font-size: 12pt;
+            font-weight: 320;   
+            line-height: 150%;
+            }
+                a {
+                color: black;
+                text-decoration: none;
+                }
+                a:hover{
+                text-decoration: underline;
+                text-underline-offset: 4px;
+                }
+        .text {
+        font-size: 11pt;
+        font-weight: 320;
+        line-height: 190%;
+        text-align: justify;
+        text-indent: 5mm;
+        }
+            .text img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            padding: 30px 0 5px 0
+            }
+            .text video {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            padding: 30px 0 5px 0
+            }
+            .text figure {
+            font-size: 10pt;
+            text-align: center;
+            line-height: 150%;
+            }
+            .text blockquote {
+            font-size: 10pt;
+            margin: auto 40px auto 40px;
+            }
+            .footnote-ref {
+            font-size: 8pt;
+            color: black;
+            text-decoration: none;
+            }
+            .exgrid .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 100%;
+            }
+        .footnotes{
+        font-size: 10pt;
+        font-weight: 320;
+        line-height: 150%;
+        border-top: 1px dashed black;
+        margin: 20px auto 0 auto;
+        padding: 30px 0 30px 0;
+        }
+            .footnotes a {
+            font-size: 8pt;
+            color: black;
+            text-decoration: none;
+            }
+            .footnotes ol {
+            counter-reset: footnote-counter;
+            list-style: none;
+            padding-left: 0;
+            }
+                .footnotes ol li {
+                counter-increment: footnote-counter;
+                display: flex;
+                align-items: flex-start;
+                gap: 5px;
+                }
+                .footnotes ol li::before {
+                content: counter(footnote-counter) ")";
+                flex-shrink: 0;
+                }
+                .footnote ol li p {
+                margin: 0;
+                flex: 1;
+                position: relative;
+                }
+                #backToHomeBar {
+                display: none;
+                }
+                @media screen and (max-width: 950px) {
+                    .container {
+                    flex-direction: column;
+                    height: auto;
+                    }
+                        .left {
+                        order: 1;
+                        position: relative;
+                        width: 100%;
+                        height: auto;
+                        max-width: none;
+                        min-width: 0;
+                        position: relative;
+                        border-right: none;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.393);
+                        margin: 0;
+                        padding: 40px 30px 40px 30px;
+                        overflow-y: visible;
+                        }
+                        .right {
+                        order: 2;
+                        width: 100%;
+                        max-width: none;
+                        min-width: 0;
+                        height: auto;
+                        padding: 30px 20px;
+                        overflow-y: visible;
+                        }
+                        #sittingman {
+                        order: 3;
+                        position: static;   
+                        display: block;     
+                        margin: 30px auto 10px auto; 
+                        text-align: center; 
+                        }
+                        #backToHomeBar {
+                        display: flex;
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 42px; /* M size */
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: #ffff;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                        transform: translateY(100%);
+                        transition: transform 0.28s ease;
+                        z-index: 9999;
+                        }
+                            #backToHomeBar a {
+                            font-size: 10.5pt;
+                            color: #000000;
+                            text-decoration: none;
+                            font-weight: 400;
+                            }
+                            #backToHomeBar.show {
+                            transform: translateY(0%);
+                            }
+                        .exgrid .grid {
+                        grid-template-columns: 1fr;
+                        }    
+                }
+    </style>
+    </head>
+
+    <body>
+    <div class="container">
+        <div class="left">
+            <div class="title">감은 눈의 어둠에서 드러나는 손</div><span class="info"><a href="https://www.arariogallery.com/ko/exhibitions/363-solo-exhibition/">__이진주, 《이진주: 불연속연속》</a></span>
+            <div id="sittingman"><a href="../livingroom.html"><img src="../man/sittingman.png"></a></div>
+        </div>
+
+        <div class="right">
+            <div class="text">
+            <p>아무것도 볼 수 없다. 이런 메모를 한 적 있는데, 이는 《수묵별미水墨別美: 한·중 근현대 회화》(국립현대미술관 덕수궁관, 2024)에서 작가의 〈볼 수 있는 21〉(2024)을 보고 썼던 것이다. 상상을 차단하는 검정. 선명하게 묘사된 신체. 탄 종이를 들여다보는 행동. 다른 사람인지 같은 사람인지 모를 관계. 그래서 거울을 사이에 둔 건지 마주 보고 서 있는 건지 알 수 없는 구도. 이해는 자꾸 미끄러지고 짐작은 부정되고, 분명하게 나타나 있는 것을 앞에 두고서도 볼 수 있는 것이 사라지는 감각.</p>
+            <p>지금 생각해 보면 그때 나는 작품을 더 자세히 볼 게 아니라, 도리어 눈을 감아야 했다.</p>
+            <p><figure><img src="../content/photo/250929/250929_p1.jpg"><figcaption>〈겹쳐진 – 사라진〉, 2025, Handmade Leejeongbae black,<br>powdered pigment, animal skin glue and water on unbleached cotton, 56×37×200 cm.</figcaption></figure></p>
+            <br>
+            <p>전시장 내에 대뜸 흰 가벽이 서 있다. 그 주위를 따라 돌다 보면, 벽이 가리고 있는 면을 발견하게 된다. 또 완전한 검정. 바위가 있고, 이를 드는 손이 있고, 이마와 입을 가리는 손이 있고, 바위를 함께 들어주는 다른 손이 있고, 발을 밟고 있는 발이 있다. 얼굴의 주인은 바위를 든 어느 손과 밟힌 발의 주인과 일치할 것 같지만, 이는 구도를 통한 해석이다. ‘이정배블랙’이라 불리는 작품 속 검정은 그 구도를 모두 가리고 있다. 구도를 확신할 수 없다. 돌을 든 몸은 발을 드러내지 않았을 수 있고, 돌을 든 몸의 주인이 밟는 발의 주인일 수 있고, 밟힌 발의 주인은 손을 드러내지 않았을 수 있다. 그래서 각각의 신체를 결합하고서 연속된다고 말하는 것도 맞지만, 동시에 각각의 신체를 해체하고서 연속되지 않는다고 말하는 것도 맞다. “한없이 어둡고 극도로 깊은 감정을 지닌, 그래서 수많은 사건을 뒤덮은 것처럼 보이는 순수한 블랙”<sup><a href="#footnote1" id="ref1" class="footnote-ref">1&#41;</a></sup>으로서 ‘이정배블랙’. 아무것도 보이지 않고 닿는 것이 없어서 느낄 수 없고, 추적할 수 없는 미궁만으로 남게 한다. 뒤는 완전히 가려진다. 짐작은 헛손질이 된다.</p>
+            <div class="exgrid"><p><figure><div class="grid"><div class="tile"><img src="../content/photo/250929/250929_p2.jpg"></div><div class="tile"><img src="../content/photo/250929/250929_p3.jpg"></div></div><figcaption>〈겹쳐진 – 사라진〉, 일부</figcaption></figure></p></div>
+            <br>
+            <p>이런 검정 속에서 동시에 일어나는 불/연속는 작가의 작품에서 자주 등장하는 것이다. 처음에 언급된 〈볼 수 있는 21〉도 그렇고, 모은 손과 그 손을 쥔 손과 그것들의 틈을 보려는 얼굴을 그린 〈보기〉(2021), 작은 캔버스들 각각에 다양한 손 모양이나 물건을 쥔 손을 그린 연작 〈대답들〉도 그렇다. 때로는 〈28의 틈〉(2025)이나 〈2시의 틈〉처럼 하양으로 반전하여 불/일치를 시도하고, 때로는 〈남은-오목한〉처럼 생략을 통해 실제에 구도를 숨긴다.</p>
+            <p><figure><img src="../content/photo/250929/250929_p4.jpg"><figcaption>〈대답들〉 연작, 2024, Handmade Leejeongbae black,<br>powdered pigment, animal skin glue and water on unbleached cotton, 44 x 34 cm.</figcaption></figure></p>
+            <p><figure><img src="../content/photo/250929/250929_p5.jpg"><figcaption>〈2시의 틈〉, 2025, Handmade Leejeongbae black,<br>handmade Leejeongbae white, powdered pigment, animal skin glue and water on unbleached cotton, birch plywood, cherrywood, cross-grain plywood, Auro no. 129 oil, 39 x 28 x 34(d) cm.</figcaption></figure></p>
+            <p><figure><img src="../content/photo/250929/250929_p6.jpg"><figcaption>〈남은 – 오목한〉, 2025, Handmade Leejeongbae black,<br>powdered pigment, animal skin glue and water on unbleached cotton, mahogany, Osmo oil, 12 x 9.3 x 89.6(h) cm.</figcaption></figure></p>
+            <br>
+            <p>구도가 없는 작품에서도 이는 드러난다. 벽에 세 개의 그림이 걸려 있다. 각각 동일한 사람의 것으로 보이는 세 개의 손만 그려져 있다. 그리고 얼음이 있다. 두 손으로 쥐어야 하는 크기의 얼음(〈낙하-시린〉)은 시간이 지나 한 손으로 쥘 수 있는 크기가 되고(〈낙하-차가운〉), 이것은 또 시간이 지나 손가락 위에 올릴 수 있는 크기가 된다(〈낙하-투명한〉). 각각 걸리는 시간이 다르다는 듯 작품의 간격이 다르게 띄어져 있다.</p>
+            <p>이것은 연속되는 시간 속 동일한 사람과 동일한 얼음……일 것이다. 그런가?</p>
+            <p><figure><img src="../content/photo/250929/250929_p7.jpg"><figcaption>위 〈낙하 – 차가운〉, 가운데 〈낙하 - 시린〉, 아래 〈낙하 - 투명한〉, 각각, 2025, Handmade Leejeongbae black, powdered pigment, animal skin glue and water on unbleached cotton, 40(ø)cm.</figcaption></figure></p>
+            <br>
+            <p>중력에 의해 떨어지는 물체는 다시 올라갈 수 없다. 낙하는 연속이다. 체온에 의해 녹는 얼음은 다시 얼 수 없다. 녹는 현상은 연속이다. 그렇다면 떨어져서 부서진 물체는 처음에 온전하던 물체와 동일한가? 그렇다면 녹아서 작아진 얼음은 처음에 온전하던 얼음과 동일한가? 연속되므로 동일하다. 하지만 가변했으므로 동일하지 않다. 얼음을 은유로 생각해도 동일하다. 얼음을 반응으로써 감정에 비유한다면 이럴 것이다. 통증으로 반응하던 감정은 시간이 지나 그저 감정 자체의 반응만 남고, 또 시간이 지나 감정이라는 껍질만 남아 아무런 반응도 일으키지 않는다. 다시, 그렇다면 모두 동일한 반응인가? 동일한 감정이지만, 동일한 감정이 아니다.</p>
+            <p>또 다른 작품 〈여기서부터 1〉은 녹색 실과 손들을 통해 시각적으로 불/연속이 표현된다. 실의 끝이 분명히 있지만(위에서 두 번째 손등), 여기서부터 어디로 이어지는지 추적하다 보면 실이 각각의 손에서 돌고 돈다는 것을 확인할 수 있다. 한 개의 실이 아닌 것 같고, 그러나 모두 연결되어 있어서 한 개의 실이 맞는 것 같은, 실. 한 개의 실이라는 말도 맞고 여러 개의 실이라는 말도 맞다. 실제로 한 개의 실이고 여러 개의 실이기 때문이다.</p>
+            <p>대립되는 관계가 모두 내재된 곳. 작가의 이런 세계는 “비현실적이고 비논리적인 방식으로 관계 맺으며 낯선 풍경을 구축”하여 이뤄진, “고정되지 않는 의미와 자유로운 해석의 여지를 품은 유연한 장”<sup><a href="#footnote2" id="ref2" class="footnote-ref">2&#41;</a></sup>이다.</p>
+            <p><figure><img src="../content/photo/250929/250929_p8.jpg"><figcaption>〈여기서부터 1〉, 2025, Handmade Leejeongbae black,<br>powdered pigment, animal skin glue and water on unbleached cotton, 100 x 54 cm.</figcaption></figure></p>
+            <br>
+            <p>범람할 정도로 작품에 많이 등장하는 오브제들. 이를테면 〈오목한 눈물 - 불룩한 용기〉에서 누운 돼지, 피로 물든 계곡, 파란 호스, 찢어진 네트 등. 특정될 만큼 기존의 어떤 기호나 상징에 긴밀히 연결된다. 여태의 관점으로 본다면 그것은 틀린 연결도 맞는 연결도 아니다. 유연한 장이기 때문이다. 상징과 기호로 범벅된 현장을 헤집는 행위자. 연속적인 진동과 불연속적인 진동 속을 거니는 설원의 보행자. 시작과 끝이 끊임없이 지워지고, 모든 것이 연결되어 있으나 모든 것이 연결되어 있지 않은 눈밭. 무한한 하양. 이를 실어 오는 바람들.</p>
+            <p><figure><img src="../content/photo/250929/250929_p9.jpg"><figcaption>〈오목한 눈 – 볼록한 용기〉 일부, 2025, Powdered pigment,<br>animal skin glue and water on unbleached cotton, 200 x 300 cm (2 pcs.).</figcaption></figure></p>
+            <br>
+            <p>본래 그 오브제는 아무것도 말하지 않는다. 무슨 일이 일어날 것만 같은데 그것이 왠지 좋은 일은 아닐 것만 같은, 작품들이 뿜어내는 예감은 작품 전체에 아울러 있는 분위기 때문이다. 이는 기존의 상징이나 기호에 연속되어 발생한다. 좀처럼 좋은 일이 일어날 거라고 말해주지 않는 것들. 그렇지 않았던 것들. 그렇다고 하던 것들......우리는 이전에 이미 일어난 일을 근고로 다음에 일어날 일을 예감하지만, 실은 이전에 일어난 일이 근거로 채택될 순 없다. 그 일이 그 결과로 연속된 적이 있었을 뿐, 이번의 일도 그 결과로 연속될진 모르지 않는가. 과거는 미래를 보장하지 않는다. 상징은 현상을 보장하지 않는다. 그것을 만드는 것의 정체는 온전히 주체의 눈이다. </p>
+            <p>성립되는 기호와 상징들. 그것에 누군가는 죽고 누군가는 살아남는다. 그것에 누군가는 강해지고 누군가는 약해진다. 정치적이든, 개인적이든. 우리는 그들의 눈이나 자신의 눈에서 벗어나지 못한다. 가해자와 피해자가 계속 나타나고, 혹은 망령으로서 기호와 상징들로 인해 가해자는 만질 수 없는데 피해자만 속출하는 일이 발생할 수 있다. ‘나’의 눈은 정말 ‘나’의 눈인가. 그들의 눈은 정말 그들의 눈인가. 유령은 어디에 있는가?</p>
+            <br>
+            <p>작가의 작품에서 느껴지는 일종의 운동성은 “불연속연속”을 통해 테제로 기능하는 연속을 흔들면서 발생한다. 혹은, 신화로 굳어진 의미망을 탈피하고 보는 이의 감은 눈에서 신화가 시작되도록 꿈틀거리면서 발생한다. 혹은, 작가가 겪은 “불연속연속”들의 생생한 현장이 그대로 재현되면서 발생한다. 보는 이는 작가의 작품 앞에서 연속도 잃어버리고 불연속도 잃어버린다. 자기의 과거와 자기의 미래로부터 벗어난다.</p>
+            <p>혼자 남게 된다.</p>
+            <br>
+            <p>감은 눈의 어둠 속에서 어떤 구체적인 손이 드러난다.</p>
+            <br>
+            <p>결국 아무것도 볼 수 없었던 이유는, 그곳에 모든 것이 가능해져서 무엇이 있었다고 정확히 말할 수 없었기 때문이다. 하나의 것에서 벗어나자 모든 것이 시작되는 순간. 여러 가지의 가능성이 동시에 존재하는 곳. 세밀한 묘사가 두드러지는데도 불구하고, 그것이 초현실로 느껴지는 이유는 바로 여기에 있다. 이제 모든 것이 연결될 것이며 모든 것이 연결되지 않을 것이라는 감각. 그리고 그 현장. 아무것도 볼 수 없다.</p>
+            <p>그러나 무엇을 보고 싶은지 안다면, 무엇이 보이는지 알 수 있을 것이다. 눈을 감아야 한다.</p>
+            <br>
+            <p class="date" style="text-align: right; font-size: 8pt;">2025.09.29.</p>
+            </div>
+                <div class="footnotes">
+                <ol>
+                    <li id="footnote1"><p>정윤주, 「아티스트 이진주의 작업실」 인터뷰, 비애티튜드 매거진. https://magazine.beattitude.kr/creators-room/leejinju/<a href="#ref1" class="footnote-backref">↑</a></p>
+                    </li>
+                    <li id="footnote2"><p>아라리오 갤러리, 《이진주: 불연속연속》(2025) 전시 서문.<a href="#ref2" class="footnote-backref">↑</a></p>
+                    </li>
+                </ol>
+                </div>
+        </div>
+    </div>
+    <div id="backToHomeBar"><a href="../livingroom.html">back to the town</a></div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const man = document.getElementById("sittingman");
+    const right = document.querySelector(".right");
+    const left = document.querySelector(".left");
+    const backToHomeBar = document.getElementById("backToHomeBar");
+    
+    let lastScrollY = window.scrollY;
+
+    function moveMan() {
+    if (window.innerWidth <= 950) {
+      right.appendChild(man);
+    } else {
+      left.appendChild(man);
+    }
+    }
+
+    function toggleBackToHomeBar() {
+    const scrollY = window.scrollY;
+    const scrollingUp = scrollY < lastScrollY;
+    const atTop = scrollY <= 5;  
+    const atBottom = window.innerHeight + scrollY >= document.body.offsetHeight - 2;
+        if (window.innerWidth <= 950) {
+            if (atTop || atBottom) {
+            backToHomeBar.classList.remove("show");
+            } else if (scrollingUp) {
+            backToHomeBar.classList.add("show");
+            } else {
+            backToHomeBar.classList.remove("show");
+            }
+            } else {
+            backToHomeBar.classList.remove("show");
+            }
+    lastScrollY = scrollY;
+    }
+
+
+        moveMan();
+        toggleBackToHomeBar();
+
+        window.addEventListener("resize", function () {
+        moveMan();
+        toggleBackToHomeBar();
+        });
+
+    window.addEventListener("scroll", toggleBackToHomeBar);
+    });
+    </script>
+    </body>
+</html>
