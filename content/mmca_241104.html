@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>ansqhdd</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+        font-family: 'NotoSansKR';
+        src: url(../fonts/NotoSansKR.ttf) format(truetype);
+        }
+        
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'NotoSansKR';
+        }
+
+        #sittingman {
+        right: 30px;
+        bottom: 20px;
+        position: absolute;
+        display: inline-block;
+        }
+            #sittingman img {
+            width: 20px;
+            height: auto;
+            }
+            #sittingman::after {
+            content: "back to the town";
+            position: absolute;
+            right: 130%;
+            top: 0;
+            background-color: rgba(80, 78, 78, 0.7);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 7pt;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            }
+            #sittingman:hover::after {
+            opacity: 1;
+            }
+
+        .container {
+        display: flex;
+        position: relative;
+        height: 100vh;
+        }
+            .left {
+            width: 25%;
+            height: 100vh;
+            max-width: 351px;
+            min-width: 265px;
+            margin-left: auto;
+            padding: 45px 100px 0 50px;
+            border-right: 1px solid rgba(0, 0, 0, 0.393);
+            position: sticky;
+            overflow-y: auto;
+            }
+            .right {
+            width: 75%;
+            height: 100vh;
+            max-width: 1017px;
+            min-width: 794px;
+            margin-right:auto;
+            padding: 45px 130px 35px 130px;
+            overflow-y: scroll;
+            }
+        .title {
+        font-size: 20pt;
+        font-weight: 450;
+        line-height: 150%;
+        padding-bottom: 10px;
+        }
+            .info {
+            font-size: 12pt;
+            font-weight: 320;   
+            line-height: 150%;
+            }
+                a {
+                color: black;
+                text-decoration: none;
+                }
+                a:hover{
+                text-decoration: underline;
+                text-underline-offset: 4px;
+                }
+        .text {
+        font-size: 11pt;
+        font-weight: 320;
+        line-height: 190%;
+        text-align: justify;
+        text-indent: 5mm;
+        }
+            .text img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            padding: 30px 0 5px 0
+            }
+            .text video {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            padding: 30px 0 5px 0
+            }
+            .text figure {
+            font-size: 10pt;
+            text-align: center;
+            line-height: 150%;
+            }
+            .text blockquote {
+            font-size: 10pt;
+            margin: auto 40px auto 40px;
+            }
+            .footnote-ref {
+            font-size: 8pt;
+            color: black;
+            text-decoration: none;
+            }
+            .exgrid .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 100%;
+            }
+        .footnotes{
+        font-size: 10pt;
+        font-weight: 320;
+        line-height: 150%;
+        border-top: 1px dashed black;
+        margin: 20px auto 0 auto;
+        padding: 30px 0 30px 0;
+        }
+            .footnotes a {
+            font-size: 8pt;
+            color: black;
+            text-decoration: none;
+            }
+            .footnotes ol {
+            counter-reset: footnote-counter;
+            list-style: none;
+            padding-left: 0;
+            }
+                .footnotes ol li {
+                counter-increment: footnote-counter;
+                display: flex;
+                align-items: flex-start;
+                gap: 5px;
+                }
+                .footnotes ol li::before {
+                content: counter(footnote-counter) ")";
+                flex-shrink: 0;
+                }
+                .footnote ol li p {
+                margin: 0;
+                flex: 1;
+                position: relative;
+                }
+                @media screen and (max-width: 950px) {
+                    .container {
+                    flex-direction: column;
+                    height: auto;
+                    }
+                        .left {
+                        order: 1;
+                        position: relative;
+                        width: 100%;
+                        height: auto;
+                        max-width: none;
+                        min-width: 0;
+                        position: relative;
+                        border-right: none;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.393);
+                        margin: 0;
+                        padding: 40px 30px 40px 30px;
+                        overflow-y: visible;
+                        }
+                        .right {
+                        order: 2;
+                        width: 100%;
+                        max-width: none;
+                        min-width: 0;
+                        height: auto;
+                        padding: 30px 20px;
+                        overflow-y: visible;
+                        }
+                        #sittingman {
+                        order: 3;
+                        position: static;   
+                        display: block;     
+                        margin: 30px auto 10px auto; 
+                        text-align: center; 
+                        }
+                        #backToHomeBar {
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 42px; /* M size */
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: #ffff;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                        transform: translateY(100%);
+                        transition: transform 0.28s ease;
+                        z-index: 9999;
+                        }
+                            #backToHomeBar a {
+                            font-size: 10.5pt;
+                            color: #000000;
+                            text-decoration: none;
+                            font-weight: 400;
+                            }
+                            #backToHomeBar.show {
+                            transform: translateY(0%);
+                            }
+                        .exgrid .grid {
+                        grid-template-columns: 1fr;
+                        }    
+                }
+    </style>
+    </head>
+
+    <body>
+    <div class="container">
+        <div class="left">
+            <div class="title">주문을 외워 빛을 만들고, 나는</div><span class="info"><a href="https://www.mmca.go.kr/exhibitions/exhibitionsDetail.do?exhFlag=3&exhId=202403060001752">__양정욱, 《올해의 작가상 2024》</a></span>
+            <div id="sittingman"><a href="../livingroom.html"><img src="../man/sittingman.png"></a></div>
+        </div>
+
+        <div class="right">
+            <div class="text">
+            <p>작은 모터로 회전하는 몸통, 회전에 의해 움직이는 막대, 막대에 의해 움직이는 다른 막대나 다른 막대들. 끝에 걸린 긴 줄이 움직이고, 줄에 달린 돌이나 나무 조각이 흔들린다. 몸체 속에 서로 많은 것들이 연결되어 있다. 원형과 선형의 중첩 속에서 움직임은 유기적이다. 모터를 찾으면 움직임의 시작을 알고 움직임의 논리를 파악할 수 있을 것 같다. 그런데 다른 곳에도 모터가 붙어 있다. 이 부분의 움직임은 이 모터에 의해 시작된 걸까, 저 모터에 의해 시작된 걸까. 연결을 추적하는 동안 인과를 잃어버린다. 너무 복잡하니까…. 결국 하나의 몸체를 전체적으로 관망하게 된다. 복잡하고 유기적인 움직임.</p>
+            <p>이것은 마치 생명체 같다. 이미 인과를 잃어버렸으나 이로 인해 혼란 자체는 되지 않으려고 패턴을 만드는, 그런 생명체.</p>
+            <p><figure><img src="../content/photo/241104/241104_p1.png"><figcaption>〈우리들의 주말을 거북이만 모른다〉, 2024, 나무, 모터, LED, 실, 290×290×160cm, 작가 소장, ⓒ 양정욱.</figcaption></figure></p>
+            <p><figure><img src="../content/photo/241104/241104_p2.png"><figcaption>〈서서 일하는 사람들 #22〉, 나무, 모터, 백열전구, 실, 220×150×150cm, 2021, 작가 소장, ⓒ 양정욱.</figcaption></figure></p>
+            <br>
+            <p>패턴을 설명한다면, ‘지금 이것이 다음에도 똑같이 나타나는 일’ 정도로 충분할지 모른다. 하지만 이것이 다음에 똑같이 ‘있을 때’ 패턴이라 부르지 않는다. ‘지속’이라 불러야 정확하다. 지속과 패턴은 유사한 형태를 지닌다. 그러다 결국 다른 단어가 되는 것은 구간이 두 개 이상이 될 때다. 지속은 한 개의 구간만 갖는다. 상태A에서 상태B가 되지 않고 상태A가 계속되므로, 구간은 A 한 개다. 반면, 패턴은 상태A에서 상태B가 되고 또 다른 상태들을 지나 언젠가 다시 상태A가 되므로, 구간은 A+B+n개다.</p>
+            <p>모든 생명체는 지속될 수 없다. 시간은 언제나 그들에게 다른 상황을 부여하는데, 이때 생명체는 어떤 상태가 될지 모를 불안에 놓인다. 그래서 생명체는 어떤 상황에서도 자기를 살아남게 했던 행동을 모아 패턴화한다. 여름이 되면 잎을 불려 빛을 최대한 받고 겨울이 되면 잎을 버려 최소가 되는 나무. 겨울이 시작될 것 같을 때 먹이를 미리 수집하여 굴에 넣어두고 그곳에서 겨울을 나는 짐승들. 어떻게 될지 모를 시간에서 그들은 그들만의 구간을 별도로 형성하고, 그 구간 속 상태를 수행하고, 그곳에서 안전을 영위한다. 자기를 아늑하게 만드는 하나의 공간인 셈이다. 그리고 생명체는 자기의 시간이 모두 종료되기 전에 다음 생명체에게 그 패턴을 유산으로 물려준다. 이 패턴 속에서 산다면 안전할 것이라고. 패턴은 생명체의 의지에 의해 형성된 것이다.</p>
+            <br>
+            <p>전시실에 작가의 텍스트들을 모아둔 책자가 놓여 있다. 그중에는 〈아는 사람의 모르는 밭에서〉(2024)와 관련된 텍스트가 있다.</p>
+            <br>
+            <blockquote><p>“이번 주는 종일 이사짐을 싸고 있다. 마트에서 가져온 조립하지 않은 상자는 그의 작은 집 한켠에 쌓여, 그의 집을 더욱 작은 집으로 만들었다. 그의 지인들이 이따금 찾아왔는데, 좁아진 입에서 앉을 수도 없었다. 그저 엉거주춤 서서 짐을 싸고 있는 그의 느릿한 손을 한동안 바라볼 뿐이었다. 그것은 어설펐으며, 답답하고, 지루했다. 포장을 대신해 주는 이사를 하라고 사람들은 설득했지만, 그는 그럴 때마다 웃음으로 넘겼다.</p><p>나름의 사정이 있는 것이다.”</p><p style="text-align: right;">⎯5쪽</p></blockquote>
+            <br>
+            <p>어느 순간을 따뜻한 이해로 관조하는 글. 읽는 이는 누군가의 기억에 들어선 것처럼 아늑해진다. 텍스트를 읽고 작품을 다시 바라보면, 작품은 어쩐지 차분한 회상을 시작으로 그 기억의 형상으로 나아간다.</p>
+            <p>순간은 정말 그때만 존재한다. 다음의 순간에 밀려나고, 여러 순간을 지나면서 결국 사라진다. 인간은 이렇게 잃고 싶지 않은 순간을 기억에 남긴다. ‘그랬다’는 식으로 종결시켜 시작과 끝을 만들고, 끝에 다다르면 언제든 시작으로 되돌아갈 수 있게끔 구성하는 것이다. 이를테면, 그가 이삿짐을 싼다(구간1) → 지인이 이따금 찾아온다(구간2) → 지인은 답답하게 짐을 싸는 그를 보며 포장 이사를 하라고 설득한다(구간3) → 그가 웃음으로 넘긴다(구간4), 같은 식이다. 인간이 그 순간을 하나의 이야기로 구성한다면, 순간은 현재와 구별된 방을 갖는다. 햇빛이 들이치고 먼지가 떠다니고 목소리가 맴돌고 재채기가 있고 창밖으로 아주 푸른 산이 펼쳐지는, 살아 있는 방. 삐걱삐걱 움직이는 기계는 이 방을 생체화하는 시도가 된다.</p>
+            <p>실시간으로 나타나고 즉시 사라지는 현재에 저항하는 인간의 움직임. 이것이 결국 현재성에 구속된 채 일어나는 것이라 하더라도, 현재성에 반하고자 하는 저항이라는 것은 변하지 않는다. 현재에 더 이상 살아 있을 수 없는 것을 불러내고자 하는 주술이다.</p>
+            <p><figure><img src="../content/photo/241104/241104_p3.png"><figcaption>〈아는 사람의 모르는 밭에서〉, 2024, 나무, 모터, 전구, 실, 설, 300×700×300cm, 작가 소장, ⓒ 양정욱.</figcaption></figure></p>
+            <br>
+            <p>작가만의 주술 특징은 두 가지다. 첫째는 오브제다. 〈서로 아껴주는 마음〉(2024)의 바닥에 비치된 흰 자기 그릇, “서로아껴주는마음”이 적힌 가훈 액자, 때가 탄 테니스공들, 먹다 남은 생수 등. ‘그때 그것’이라는 형식으로 개인적인 상징이 부여된 것들이다. 과거의 어떤 것과 현재의 어떤 것이 일치할 때, 기억은 인간에게 축조된다. 연결되지 않는 대상들도 연결되는 이 상징성 덕분에, 그 시간이 아니거나 똑같은 사물이 아니더라도 상징만 부합한다면 기억은 현재에 ‘다시’ 구성될 수 있다. 구성된 기억에는 다양한 소리가 있고, 다양한 빛이 있고, 다양한 움직임이 있다. 상징을 가진 그 어떤 것은 이 맥락에서 선명히 모습을 드러낸다. 순간이 일어나는 것이다. 둘째는 몸체를 이루는 원형과 선형이다. 그 외의 형태를 갖지 않더라도, 약간의 변형과 중첩으로 인해 구조는 복잡해진다. 이를테면 곡률을 주거나 선분에 헝겊과 스펀지를 감싸는 것. 크로키 이전에 비율을 잡는 간단한 스케치처럼 이는 구체성을 갖지 못한다. 생체화된 순간을 구체적으로 묘사하기보다, 오히려 덜어냄으로써 보는 이가 직접 ‘그의’ 나머지 순간을 구성하도록 한다.</p>
+            <p>이러한 작가의 주술 덕분에, 나의 몸에 기억이 형성되고 그 구간 속에 ‘그의 순간’이 남게 된다. 텍스트를 읽고 작품을 봤을 때처럼 말이다. 구체적인 형상이 없어서 다소 불완전한 체體로.</p>
+            <div class="exgrid"><figure><div class="grid"><div class="tile"><img src="../content/photo/241104/241104_p4.png"></div><div class="tile"><img src="../content/photo/241104/241104_p6.png"></div></div></figure></div>
+            <p><figure><figcaption><img src="../content/photo/241104/241104_p5.png" style="padding-top: 5px !important" >〈서로 아껴주는 마음〉의 오브제들</figcaption></figure></p>
+            <br>
+            <p>사실 완전한 형태를 구성하여 무언가를 불러내는 주술적 행위란 있을 수 없다. 애당초 완전한 형태라면 주술적 행위는 필요하지 않다. 그 형태로부터 파생된 파편을 조합하여 완성하려는 행위 자체가 목적이다. 〈일시적인 약도〉(2024)는 미술관 주변에서 수집한 부스러기 같은 것들을 모아 미술관으로 오는 길을 완성하려고 하고, 〈기억하려는 사람의 그림〉(2024)은 공사장 인부들이 콘크리트 벽에 못으로 메모하는 것에서 영감을 받아 흔적으로부터 주체를 완성하려고 하고, 〈저녁이 돼서야 알게 된 세 명의 동료들〉(2024)은 가만히 서 있는 사람은 조금씩 흔들린다는 것을 참고하여 움직임으로부터 세 명이라는 사람을 완성하려고 한다.</p>
+            <p>현재에서 기억을 통해 순간을 반복해도, 순간은 물리적인 제약으로 인해 완전한 체體를 가질 수 없다. 파편에서 형태로 되돌아갈 수 없다. 만질 수 없고 일어날 수 없다. 장면만 떠오를 뿐이다. 이 주술은 순간을 현재에 완성하려는 것이 아닌, 완전한 과거가 되어 사라지지 않도록 현재에 불러내려는 것이다. 파편은 이미 되돌아가는 길을 잃었다. 그러나 미래로 나아가는 현재에 의해 새로운 길을 갖는다. 새로운 형태가 된다. 이것은 패턴의 수행을 통해 반사되는 빛이, 보는 이에게 가닿아 맺힌 상이다.</p>
+            <p>모든 순간이 그저 ‘완전한’ 과거가 될 뿐이라면, 순간은 어떻게 의미를 갖는가. 어차피 사라질 것이고 어차피 기억하지 못할 텐데. 순간이 의미를 갖는 것은 기억이 되고 그 패턴 속에서 살아남을 수 있는, 그런 때가 기대될 때다. 그 순간은 다른 시간대의 현재에서 파편으로서 다른 생명체가 된다. 걷지 못하는 불완전한 체. 무엇으로부터 꿈틀거리고 있는지 잘 파악하기는 어려운 체.</p>
+            <br>
+            <p>전시실은 순간으로서 생명체들이 잔뜩 들어서 있는 공간이 된다. 시간 속에서 잃어버리고 싶지 않은 순간. 당시 나를 회복시키던 순간. 사방에서 나지막한 소리들을 내고 있다. 체를 가진 순간들이 또 주술을 외우는 것 같다. 나는 홀린 듯, 본 적 없는 밭을 걷고 전시실에서 흙냄새를 맡는다. 현재의 과도한 선명도에서 잠시 멀어지고, 몸속에서 빚어진 무언가가 움직이는 것을 느낀다. 내가 잃어버린 순간. 뭔가를 회복하는 듯한 기분이 든다. 그 몸이 나를 위해 노래를 부른다.</p>
+            <br>
+            <p class="date" style="text-align: right; font-size: 8pt;">2024.11.04.</p>
+            </div>
+        </div>
+    </div>
+    <div id="backToHomeBar"><a href="../livingroom.html">back to the town</a></div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const man = document.getElementById("sittingman");
+    const right = document.querySelector(".right");
+    const left = document.querySelector(".left");
+    const backToHomeBar = document.getElementById("backToHomeBar");
+    
+    let lastScrollY = window.scrollY;
+
+    function moveMan() {
+    if (window.innerWidth <= 950) {
+      right.appendChild(man);
+    } else {
+      left.appendChild(man);
+    }
+    }
+
+    function toggleBackToHomeBar() {
+    const scrollY = window.scrollY;
+    const scrollingUp = scrollY < lastScrollY;
+    const atTop = scrollY <= 5;  
+    const atBottom = window.innerHeight + scrollY >= document.body.offsetHeight - 2;
+        if (window.innerWidth <= 950) {
+            if (atTop || atBottom) {
+            backToHomeBar.classList.remove("show");
+            } else if (scrollingUp) {
+            backToHomeBar.classList.add("show");
+            } else {
+            backToHomeBar.classList.remove("show");
+            }
+            } else {
+            backToHomeBar.classList.remove("show");
+            }
+    lastScrollY = scrollY;
+    }
+
+
+        moveMan();
+        toggleBackToHomeBar();
+
+        window.addEventListener("resize", function () {
+        moveMan();
+        toggleBackToHomeBar();
+        });
+
+    window.addEventListener("scroll", toggleBackToHomeBar);
+    });
+    </script>
+    </body>
+</html>
