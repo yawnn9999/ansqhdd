@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>ansqhdd</title>
+    <meta charset="utf-8">
+        <style>
+            @font-face {
+            font-family: 'NotoSansKR';
+            src: url(./fonts/NotoSansKR.ttf) format(truetype);
+            }
+            * {
+            font-family: 'NotoSansKR';
+            font-weight: 350;
+            }
+
+            #logotext{
+            position: absolute;
+            font-size: 15pt;
+            color: black;
+            white-space: nowrap;
+            }
+            #logotext:hover{
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <a href="livingroom.html"><div id="logotext">...종일 돌아다니면서 한 것들</div></a>
+            <script>
+                const text = document.getElementById("logotext");
+                let x = 100, y = 100;
+                let dx = 0.25, dy = 0.25;
+                   function animate() {
+                    const w = window.innerWidth;
+                    const h = window.innerHeight;
+                    x += dx;
+                    y += dy;
+                    if (x + text.offsetWidth >= w || x <= 0) dx *= -1;
+                    if (y + text.offsetHeight >= h || y <= 0) dy *= -1;
+                    text.style.left = x + "px";
+                    text.style.top = y + "px";
+                    requestAnimationFrame(animate);
+                    }
+                    animate();
+            </script>
+    </body>
+</html>
